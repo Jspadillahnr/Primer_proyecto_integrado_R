@@ -7,8 +7,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 app = FastAPI()
 
 # Lee el archivos Excel
-datos_limpios = pd.read_excel('C:/Users/LENOVO/Documents/Henry/Primer_proyecto_integrado_R/datasets/datos_limpios.xlsx', engine='openpyxl')
-df_ML= pd.read_excel('C:/Users/LENOVO/Documents/Henry/Primer_proyecto_integrado_R/datasets/datos_limpios_recomendar.xlsx', engine='openpyxl')
+datos_limpios = pd.read_excel('datasets/datos_limpios.xlsx', engine='openpyxl')
+df_ML= pd.read_excel('datasets/datos_limpios_recomendar.xlsx')
 
 #score filmacion
 @app.get("/score/{titulo_de_la_filmacion}")
@@ -102,12 +102,6 @@ def get_actor(nombre_actor):
 
 def recomendar(titulo_de_la_filmacion:str):
     
-    #recomendar por sinoposis
-    df_ML['overview_clean'] = df_ML['overview_clean'].fillna('').astype(str)
-    vectorizer_sinop = TfidfVectorizer()
-    tfidf_matrix_sinop = vectorizer_sinop.fit_transform(df_ML['overview_clean'] )
-    cosine_sim_sinop = cosine_similarity(tfidf_matrix_sinop)
-
     #recomendar por género
     df_ML['genres'] = df_ML['genres'].fillna('').astype(str)
     vectorizer_gen = TfidfVectorizer()  
@@ -121,8 +115,7 @@ def recomendar(titulo_de_la_filmacion:str):
             break
 
     df_ML['cos_gen'] = cosine_sim_gen[pel]
-    df_ML['cos_sinop'] = cosine_sim_sinop[pel]
-    df_ML['recommend_movie_score'] = (df_ML['cos_gen']*3) + (df_ML['cos_sinop']*10) + (df_ML['vote_average']/3)
+    df_ML['recommend_movie_score'] = (df_ML['cos_gen']*3) + (df_ML['vote_average']/3)
     df_ordered = df_ML.sort_values(by='recommend_movie_score', ascending=False)
 
     return df_ordered['original_title'][1:6].tolist()
