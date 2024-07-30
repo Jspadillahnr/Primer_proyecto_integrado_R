@@ -17,9 +17,10 @@ requirements: Este archivo contiene las librerías necesarias, y sus versiones, 
   1.	En el notebook Proyecto_Integrador_limpieza_y_funciones se encuentra bien documentado el código para lograr la limpieza de datos.
   Las principales acciones que se tomaron: desanidar datos de columnas, unión de información de dos diferentes datasets, transformación de datos fecha, búsqueda de valores nulos y duplicados, cálculos de columnas, eliminación de de filas y columnas.
   2.	También en en el notebook Proyecto_Integrador_limpieza_y_funciones se encuentra el arquetipo de todas las funciones utilizadas en el desarrollo de la API
-  3.	Por último, también en Proyecto_Integrador_limpieza_y_funciones, se puede hallar el arquetipo del modelo de recomendación. Para este modelo hacemos tokenizacion, eliminación de stopwords y stemming para las sinopsis de las películas. 
-  4.	Para correr el modelo en local hay que activar primero el entorno virtual en la carpeta Fast_api. Una vez activado, asegurándose que las librerías necesarias estén instaladas en el entorno, correr el comando uvicorn proyecto:app. Proyecto porque es el nombre de nuestro archivo Python que controla la creación de la API y app es el nombre que le dimos a nuestra aplicación.
-  5.	Para correr el modelo deployado, seguir el enlace: https://primer-proyecto-integrado-r.onrender.com
+  3.	Además en en el notebook Proyecto_Integrador_limpieza_y_funciones se encuentra un breve análisis de covarianza de las variables númericas en e dataset. 
+  4.	Por último, también en Proyecto_Integrador_limpieza_y_funciones, se puede hallar el arquetipo del modelo de recomendación. Para este modelo hacemos tokenizacion, eliminación de stopwords y stemming para las sinopsis de las películas. 
+  5.	Para correr el modelo en local hay que activar primero el entorno virtual en la carpeta Fast_api. Una vez activado, asegurándose que las librerías necesarias estén instaladas en el entorno, correr el comando uvicorn proyecto:app. Proyecto porque es el nombre de nuestro archivo Python que controla la creación de la API y app es el nombre que le dimos a nuestra aplicación.
+  6.	Para correr el modelo deployado, seguir el enlace: https://primer-proyecto-integrado-r.onrender.com
 
 
 #**Metodología**: 
